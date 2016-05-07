@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Haushaltkasse</title>
+    <meta name="description" content="Haushaltkasse">
+    <meta name="keywords" content="Haushaltkasse">
+    <meta name="viewport" content="width=device-width">
+    <meta name="fragment" content="!">
+    <base href="http://localhost:3000/">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="//marek-sonnabend.de/images/favicon.png">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <style>
+
+        ul.tab-nav {
+            list-style: none;
+            border-bottom: 1px solid #bbb;
+            padding-left: 5px;
+        }
+
+        ul.tab-nav li {
+            display: inline;
+        }
+
+        ul.tab-nav li a.button {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            margin-bottom: -1px;
+            border-bottom: none;
+        }
+
+        ul.tab-nav li a.active.button {
+            border-bottom: 1px solid #fff;
+        }
+
+        .tab-content .tab-pane {
+            display: none;
+        }
+        .tab-content .tab-pane.active {
+            display: block;
+        }
+        .error{
+            background-color: red;
+        }
+        .error span{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div>
+
+        {{{ body }}}
+
+    </div>
+
+</div>
+<script>
+;(function(){
+
+    let tabA = document.getElementsByClassName('tab-a'),
+        tabPane = document.getElementsByClassName('tab-pane'),
+        waitForClick = function(_x) {
+            _x.onclick = function() {
+                let href = this.getAttribute('href').toString().replace('#', '');
+                for (let _i=0; _i < tabA.length; _i++) {
+                    tabA[_i].classList.remove('active');
+                }
+                this.classList.add('active');
+                for (let _i=0; _i < tabPane.length; _i++) {
+                    tabPane[_i].classList.remove('active');
+                }
+                document.getElementById(href).classList.add('active');
+                return false;
+            }
+        };
+
+    for (let _i=0; _i < tabA.length; _i++) {
+        waitForClick(tabA[_i]);
+    }
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<ul class="tab-nav">
+    <li>
+        <a class="button tab-a active" href="#all">Alle Zahlungen</a>
+    </li>
+    <li>
+        <a class="button tab-a" href="#input">Zahlung eingeben</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="all">
+        <form method="post" action="monat">
+            <div class="row">
+                <div class="six columns">
+                    <label for="month">Monat</label>
+                    <select class="u-full-width" name="month">
+                        <option value="1" {{#isIsSameNumber month 1}}{{/isIsSameNumber}}>Januar</option>
+                        <option value="2" {{#isIsSameNumber month 2}}{{/isIsSameNumber}}>Februar</option>
+                        <option value="3" {{#isIsSameNumber month 3}}{{/isIsSameNumber}}>März</option>
+                        <option value="4" {{#isIsSameNumber month 4}}{{/isIsSameNumber}}>April</option>
+                        <option value="5" {{#isIsSameNumber month 5}}{{/isIsSameNumber}}>Mai</option>
+                        <option value="6" {{#isIsSameNumber month 6}}{{/isIsSameNumber}}>Juni</option>
+                        <option value="7" {{#isIsSameNumber month 7}}{{/isIsSameNumber}}>Juli</option>
+                        <option value="8" {{#isIsSameNumber month 8}}{{/isIsSameNumber}}>August</option>
+                        <option value="9" {{#isIsSameNumber month 9}}{{/isIsSameNumber}}>September</option>
+                        <option value="10" {{#isIsSameNumber month 10}}{{/isIsSameNumber}}>Oktober</option>
+                        <option value="11" {{#isIsSameNumber month 11}}{{/isIsSameNumber}}>November</option>
+                        <option value="12" {{#isIsSameNumber month 12}}{{/isIsSameNumber}}>Dezember</option>
+                    </select>
+                </div>
+                <div class="six columns">
+                    <label for="year">Jahr</label>
+                    <select class="u-full-width" name="year">
+                        <option value="2016" {{#isIsSameNumber month 2016}}{{/isIsSameNumber}}>2016</option>
+                        <option value="2017" {{#isIsSameNumber month 2017}}{{/isIsSameNumber}}>2017</option>
+                        <option value="2018" {{#isIsSameNumber month 2018}}{{/isIsSameNumber}}>2018</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <input class="button-primary" type="submit" value="Senden">
+            </div>
+        </form>
+
+        <div class="row">
+            {{#if data}}
+                <div class="row">
+                    <div class="six columns">
+                        Cathrin
+                    </div>
+                    <div class="six columns">
+                        Marek
+                    </div>
+                </div>
+                {{#each data}}
+                <div class="row">
+                    <div class="six columns">
+                        {{#ifStringEquals this.forename 'cathrin'}}
+                            <a href="edit/{{this._id}}">{{this.amount}} EUR ({{this.description}}) &#10000;</a>
+                        {{/ifStringEquals}}
+                        &nbsp;
+                    </div>
+                    <div class="six columns">
+                        {{#ifStringEquals this.forename 'marek'}}
+                        <a href="edit/{{this._id}}">{{this.amount}} EUR ({{this.description}}) &#10000;</a>
+                        {{/ifStringEquals}}
+                        &nbsp;
+                    </div>
+                </div>
+                {{/each}}
+                <hr>
+                <div class="row">
+                    <div class="six columns">
+                        {{total.cathrin}} EUR
+                        &nbsp;
+                    </div>
+                    <div class="six columns">
+                        {{total.marek}} EUR
+                        &nbsp;
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="six columns">
+                        {{#ifGreaterZero total.overCathrin}}
+                           <b>+ {{total.overCathrin}} EUR</b>
+                        {{/ifGreaterZero}}
+                        &nbsp;
+                    </div>
+                    <div class="six columns">
+                        {{#ifGreaterZero total.overMarek}}
+                            <b>+ {{total.overMarek}} EUR</b>
+                        {{/ifGreaterZero}}
+                        &nbsp;
+                    </div>
+                </div>
+            {{else}}
+                Keine Daten
+            {{/if}}
+        </div>
+
+    </div>
+    <div class="tab-pane" id="input">
+        <form method="post" action="insert">
+            {{>payment}}
+        </form>
+    </div>
+</div>

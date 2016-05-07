@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="twelve columns">
+        <label for="forename">Name</label>
+        <input class="u-full-width" type="text" placeholder="Cathrin" name="forename" value="{{editData.forename}}" required>
+    </div>
+</div>
+<div class="row">
+    <div class="twelve columns">
+        <label for="description">Was gekauft?</label>
+        <input class="u-full-width" type="text" placeholder="Lidl" name="description" value="{{editData.description}}" required>
+    </div>
+</div>
+<div class="row">
+    <div class="twelve columns">
+        <label for="amount">Betrag</label>
+        <input class="u-full-width" type="text" placeholder="0,00" name="amount" value="{{editData.amount}}" required>
+    </div>
+</div>
+<div class="row">
+    <div class="four columns">
+        <label for="month">Monat</label>
+        <select class="u-full-width" name="month">
+            <option value="1" {{#isIsSameNumber editData.month 1}}{{/isIsSameNumber}}>Januar</option>
+            <option value="2" {{#isIsSameNumber editData.month 2}}{{/isIsSameNumber}}>Februar</option>
+            <option value="3" {{#isIsSameNumber editData.month 3}}{{/isIsSameNumber}}>März</option>
+            <option value="4" {{#isIsSameNumber editData.month 4}}{{/isIsSameNumber}}>April</option>
+            <option value="5" {{#isIsSameNumber editData.month 5}}{{/isIsSameNumber}}>Mai</option>
+            <option value="6" {{#isIsSameNumber editData.month 6}}{{/isIsSameNumber}}>Juni</option>
+            <option value="7" {{#isIsSameNumber editData.month 7}}{{/isIsSameNumber}}>Juli</option>
+            <option value="8" {{#isIsSameNumber editData.month 8}}{{/isIsSameNumber}}>August</option>
+            <option value="9" {{#isIsSameNumber editData.month 9}}{{/isIsSameNumber}}>September</option>
+            <option value="10" {{#isIsSameNumber editData.month 10}}{{/isIsSameNumber}}>Oktober</option>
+            <option value="11" {{#isIsSameNumber editData.month 11}}{{/isIsSameNumber}}>November</option>
+            <option value="12" {{#isIsSameNumber editData.month 12}}{{/isIsSameNumber}}>Dezember</option>
+        </select>
+    </div>
+    <div class="four columns">
+        <label for="year">Jahr</label>
+        <select class="u-full-width" name="year">
+            <option value="2016" {{#isIsSameNumber editData.year 2016}}{{/isIsSameNumber}}>2016</option>
+            <option value="2017" {{#isIsSameNumber editData.year 2017}}{{/isIsSameNumber}}>2017</option>
+            <option value="2018" {{#isIsSameNumber editData.year 2018}}{{/isIsSameNumber}}>2018</option>
+        </select>
+    </div>
+</div>
+<div class="row">
+    <input class="button-primary" type="submit" value="Senden">
+</div>
