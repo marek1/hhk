@@ -67,8 +67,8 @@ var startServer = (options) =>  {
     app.set('view engine', 'handlebars');
     app.set('/views', express.static(__dirname + '/views'));
 
-    server = app.listen(options && options.port || 3000, () => {
-            console.log('App listening on port 3000!');
+    server = app.listen(options && options.port || 3004, () => {
+            console.log('App listening on port 3004!');
     });
 
 };
