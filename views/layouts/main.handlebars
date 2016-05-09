@@ -45,8 +45,13 @@
         .error{
             background-color: red;
         }
-        .error span{
+        .success{
+            background-color: green;
+        }
+        .success div,
+        .error div{
             color: white;
+            padding: 10px;
         }
     </style>
 </head>
@@ -63,7 +68,7 @@
 </div>
 <script>
 ;(function(){
-
+    // Tabs
     let tabA = document.getElementsByClassName('tab-a'),
         tabPane = document.getElementsByClassName('tab-pane'),
         waitForClick = function(_x) {
@@ -80,13 +85,10 @@
                 return false;
             }
         };
-
     for (let _i=0; _i < tabA.length; _i++) {
         waitForClick(tabA[_i]);
     }
-
 })();
 </script>
-
 </body>
 </html>
