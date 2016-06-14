@@ -10,7 +10,7 @@
     <meta name="keywords" content="Haushaltkasse">
     <meta name="viewport" content="width=device-width">
     <meta name="fragment" content="!">
-    <base href="http://localhost:3000/">
+    <base href="http://localhost:3004/">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="//marek-sonnabend.de/images/favicon.png">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
@@ -70,23 +70,23 @@
 <script>
 ;(function(){
     // Tabs
-    let tabA = document.getElementsByClassName('tab-a'),
+    var tabA = document.getElementsByClassName('tab-a'),
         tabPane = document.getElementsByClassName('tab-pane'),
         waitForClick = function(_x) {
             _x.onclick = function() {
-                let href = this.getAttribute('href').toString().replace('#', '');
-                for (let _i=0; _i < tabA.length; _i++) {
+                var href = this.getAttribute('href').toString().replace('#', '');
+                for (var _i=0; _i < tabA.length; _i++) {
                     tabA[_i].classList.remove('active');
                 }
                 this.classList.add('active');
-                for (let _i=0; _i < tabPane.length; _i++) {
+                for (var _i=0; _i < tabPane.length; _i++) {
                     tabPane[_i].classList.remove('active');
                 }
                 document.getElementById(href).classList.add('active');
                 return false;
             }
         };
-    for (let _i=0; _i < tabA.length; _i++) {
+    for (var _i=0; _i < tabA.length; _i++) {
         waitForClick(tabA[_i]);
     }
 })();
