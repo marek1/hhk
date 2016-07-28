@@ -54,6 +54,14 @@ var startServer = (options) =>  {
             isMarek: function(item) {
                 console.log('item : ', item);
                 return item.forename.toString().toLowerCase() === 'marek';
+            },
+            calcDiff: function (x,y){
+                var _res = parseFloat(x - y).toFixed(2);
+                if (_res<0){
+                    return '<span style="color:red;">'+_res+' &euro;</span>';
+                } else {
+                    return '<span style="color:green;">'+_res+' &euro;</span>';
+                }
             }
         },
 

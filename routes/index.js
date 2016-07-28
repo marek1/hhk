@@ -41,7 +41,24 @@ var paymentSchema = new Schema({
 var Payment = mongoose.model('Payment', paymentSchema);
 
 router.get('/', (req, res) => {
-    res.render('index', {title: 'Kasse'});
+    var total = {};
+    var year = 2016;
+    Payment.find({ year : year }, function(err, docs) {
+        console.log('docs.length : ', docs.length);
+        docs.map(function(_obj){
+            console.log('_obj.forename : ',_obj.forename);
+            var _name = _obj.forename.toString().toLowerCase();
+            if (typeof total[_name] === 'undefined') {
+                total[_name] = 0;
+            }
+            total[_name] = total[_name] + (!isNaN(_obj.amount) ? parseFloat(_obj.amount) : 0);
+        });
+        console.log('total : ', total);
+        res.render('index', {title: 'Kasse', year: year, total : total});
+    }, function() {
+        console.log('error ! ');
+        res.render('index', {title: 'Kasse', year: year, total : total});
+    });
 });
 
 router.post('/monat', (req, res) => {

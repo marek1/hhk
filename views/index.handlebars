@@ -13,6 +13,24 @@
 </ul>
 <div class="tab-content">
     <div class="tab-pane active" id="all">
+        <div class="row">
+            <b>Gesamt {{{year}}} :</b>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <div><b>Cathrin : </b></div>
+                {{{total.cathrin}}} &euro;
+            </div>
+            <div class="six columns">
+                <div><b>Marek : </b></div>
+                {{{total.marek}}} &euro;
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            {{#calcDiff total.cathrin total.marek}}{{/calcDiff}}
+        </div>
+        <hr/>
         <form method="post" action="monat">
             <div class="row">
                 <div class="six columns">
